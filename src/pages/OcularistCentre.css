@@ -1,0 +1,165 @@
+/* OcularistCentre.css */
+/* Ocularist Intro */
+.ocularist-intro h3 {
+  font-family: var(--font-primary);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-magenta);
+}
+
+.ocularist-intro p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+.ocularist-intro p:last-child {
+  margin-bottom: 0;
+}
+
+/* Benefits Grid */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.benefit-card {
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.benefit-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 240, 255, 0.1);
+  color: var(--color-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+
+.benefit-card h4 {
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.benefit-card p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Services List */
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.service-check {
+  color: var(--color-cyan);
+  flex-shrink: 0;
+}
+
+.service-item span {
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+}
+
+/* Results Grid */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.result-card {
+  padding: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  cursor: crosshair;
+}
+
+.result-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.result-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.af-image {
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+.result-card:hover .bf-image {
+  opacity: 0;
+}
+
+.result-card:hover .af-image {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.result-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding: 0 1rem;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.label-bf { color: var(--color-text-muted); transition: color 0.3s; }
+.label-af { color: var(--color-magenta); opacity: 0.4; transition: opacity 0.3s; }
+
+.result-card:hover .label-bf { opacity: 0.4; }
+.result-card:hover .label-af { opacity: 1; }
+
+@media (max-width: 900px) {
+  .benefits-grid,
+  .results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .services-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .benefits-grid,
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}

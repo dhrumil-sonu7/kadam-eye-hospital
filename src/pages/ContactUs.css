@@ -1,0 +1,148 @@
+/* Branches Grid */
+.branches-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.branch-card {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.branch-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid;
+}
+
+.branch-pin {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.branch-header h3 {
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.branch-details {
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.branch-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.branch-detail svg {
+  color: var(--color-cyan);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.branch-detail a {
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+}
+
+.branch-detail a:hover {
+  color: var(--color-magenta);
+}
+
+.branch-map-btn {
+  margin: 0 2rem 1.5rem;
+  justify-content: center;
+  font-size: 0.85rem;
+  padding: 0.6rem 1.2rem;
+}
+
+.branch-map-btn:hover {
+  color: white !important;
+}
+
+/* Map */
+.map-container {
+  overflow: hidden;
+  padding: 4px;
+}
+
+/* Contact Summary */
+.contact-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3rem;
+}
+
+.contact-summary-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+}
+
+.contact-summary-icon {
+  color: var(--color-cyan);
+  flex-shrink: 0;
+}
+
+.contact-summary-item h4 {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.contact-summary-item p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.contact-summary-divider {
+  width: 1px;
+  height: 60px;
+  background: rgba(255,255,255,0.1);
+}
+
+@media (max-width: 900px) {
+  .branches-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .contact-summary {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .contact-summary-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .contact-summary-divider {
+    width: 60px;
+    height: 1px;
+  }
+}
