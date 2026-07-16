@@ -1,7 +1,7 @@
 /* Page Hero (shared across inner pages) */
 .page-hero {
   position: relative;
-  padding: calc(var(--navbar-height) + 0.25rem) 0 1.5rem;
+  padding: 2rem 0 1.5rem;
   background: linear-gradient(135deg, var(--color-midnight), var(--color-midnight-light));
   text-align: center;
   overflow: hidden;
@@ -95,7 +95,7 @@
   }
 
   .page-hero {
-    padding: var(--navbar-height) 0 1rem;
+    padding: 1.5rem 0 1rem;
   }
 
   .page-hero h1 {
