@@ -14,6 +14,7 @@ const quickLinks = [
 ]
 
 const centres = [
+  { path: '/lasik-centre', label: 'LASIK Centre' },
   { path: '/cornea-centre', label: 'Cornea Centre' },
   { path: '/ocularist-centre', label: 'Ocularist Centre' },
   { path: '/cornea-transplant', label: 'Cornea Transplant Centre' },

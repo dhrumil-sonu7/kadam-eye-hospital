@@ -15,7 +15,7 @@ import useSEO from '../hooks/useSEO'
 
 const centres = [
   { icon: <Eye size={32} />, title: 'Phaco Centre', desc: 'Advanced phacoemulsification cataract surgery with foldable IOL implantation', color: '#00b4d8' },
-  { icon: <Zap size={32} />, title: 'LASIK Centre', desc: 'State-of-the-art laser vision correction for spectacle-free living', color: '#d4a853' },
+  { icon: <Zap size={32} />, title: 'LASIK Centre', desc: 'State-of-the-art laser vision correction for spectacle-free living', color: '#d4a853', path: '/lasik-centre' },
   { icon: <Activity size={32} />, title: 'Retina Centre', desc: 'Vitreo-retinal surgery and treatment for retinal disorders', color: '#2ecc71' },
   { icon: <Microscope size={32} />, title: 'Glaucoma Clinic', desc: 'Comprehensive glaucoma diagnosis, treatment and surgery', color: '#e74c3c' },
   { icon: <Shield size={32} />, title: 'Squint Clinic', desc: 'Treatment and surgical correction of squint/strabismus', color: '#9b59b6' },
@@ -260,8 +260,8 @@ export default function Home() {
             </AnimatedSection>
 
             <div className="centres-grid">
-              {centres.map((centre, i) => (
-                <AnimatedSection key={i} variant="fadeUp" delay={i * 0.1}>
+              {centres.map((centre, i) => {
+                const CardContent = (
                   <motion.div
                     className="centre-card glass-card"
                   >
@@ -272,8 +272,20 @@ export default function Home() {
                     <p>{centre.desc}</p>
                     <div className="centre-line" style={{ background: centre.color }} />
                   </motion.div>
-                </AnimatedSection>
-              ))}
+                )
+                
+                return (
+                  <AnimatedSection key={i} variant="fadeUp" delay={i * 0.1}>
+                    {centre.path ? (
+                      <Link to={centre.path} style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}>
+                        {CardContent}
+                      </Link>
+                    ) : (
+                      CardContent
+                    )}
+                  </AnimatedSection>
+                )
+              })}
             </div>
           </div>
         </section>

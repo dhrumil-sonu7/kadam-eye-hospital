@@ -11,6 +11,7 @@ import OcularistCentre from './pages/OcularistCentre'
 import CorneaCentre from './pages/CorneaCentre'
 import ContactUs from './pages/ContactUs'
 import CorneaTransplant from './pages/CorneaTransplant'
+import LasikCentre from './pages/LasikCentre'
 import ScrollToTop from './components/ScrollToTop'
 import GlobalEyeBackground from './components/GlobalEyeBackground'
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/ocularist-centre" element={<OcularistCentre />} />
           <Route path="/cornea-centre" element={<CorneaCentre />} />
           <Route path="/cornea-transplant" element={<CorneaTransplant />} />
+          <Route path="/lasik-centre" element={<LasikCentre />} />
           <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
       </AnimatePresence>
