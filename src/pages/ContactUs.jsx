@@ -13,7 +13,7 @@ const branches = [
     appointments: '+91 9375288817',
     email: 'kadameyelasikcentre@gmail.com',
     timing: 'Mon-Sat: 9:00 AM - 1:00 PM & 4:00 PM - 7:00 PM',
-    mapUrl: 'https://www.google.com/maps?q=Kadam+Eye+Hospital+Sayajigunj+Vadodara',
+    mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=Kadam+Eye+Hospital+Sayajigunj+Vadodara',
     color: '#00b4d8',
   },
   {
@@ -23,7 +23,7 @@ const branches = [
     appointments: '+91 9375288817',
     email: 'kadameyelasikcentre@gmail.com',
     timing: 'Mon-Sat: 9:00 AM - 1:00 PM & 4:00 PM - 7:00 PM',
-    mapUrl: 'https://www.google.com/maps?q=Kadam+Eye+Hospital+Akota+Vadodara',
+    mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=Kadam+Eye+Hospital+Akota+Vadodara',
     color: '#ff0055',
   },
   {
@@ -33,7 +33,7 @@ const branches = [
     appointments: '+91 8905541958',
     email: 'kadameyehospital@yahoo.com',
     timing: 'Mon-Sat: 9:00 AM - 1:00 PM & 4:00 PM - 7:00 PM',
-    mapUrl: 'https://www.google.com/maps?q=Kadam+Eye+Hospital+Dandia+Bazar+Vadodara',
+    mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=Kadam+Eye+Hospital+Dandia+Bazar+Vadodara',
     color: '#ffd700',
   },
   {
@@ -43,7 +43,7 @@ const branches = [
     appointments: '+91 9624248001',
     email: 'kadameyehospital@yahoo.com',
     timing: 'Mon-Sat: 9:00 AM - 1:00 PM & 4:00 PM - 7:00 PM',
-    mapUrl: 'https://www.google.com/maps?q=Kadam+Eye+Hospital+Nizampura+Vadodara',
+    mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=Kadam+Eye+Hospital+Nizampura+Vadodara',
     color: '#00f0ff',
   },
 ]
@@ -104,7 +104,9 @@ export default function ContactUs() {
                     <div className="branch-details">
                       <div className="branch-detail">
                         <MapPin size={16} />
-                        <span>{branch.address}</span>
+                        <a href={branch.mapUrl} target="_blank" rel="noopener noreferrer" className="address-link">
+                          {branch.address}
+                        </a>
                       </div>
                       {branch.phone.map((ph, j) => (
                         <div key={j} className="branch-detail">
