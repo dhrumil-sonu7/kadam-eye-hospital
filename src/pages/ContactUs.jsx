@@ -6,16 +6,7 @@ import './ContactUs.css'
 import useSEO from '../hooks/useSEO'
 
 const branches = [
-  {
-    name: 'Main Branch — Sayajigunj',
-    address: 'B/H Railway Station, Sayajigunj, Vadodara - 390020, Gujarat, India',
-    phone: ['+91 (0265) 2335506', '+91 (0265) 2985506'],
-    appointments: '+91 9375288817',
-    email: 'kadameyelasikcentre@gmail.com',
-    timing: 'Mon-Sat: 9:00 AM - 1:00 PM & 4:00 PM - 7:00 PM',
-    mapUrl: 'https://www.google.com/maps/dir/?api=1&destination=Kadam+Eye+Hospital+Sayajigunj+Vadodara',
-    color: '#00b4d8',
-  },
+
   {
     name: 'Lasik Centre — Akota',
     address: '8, Urmi Society, Productivity Road, Akota, Vadodara, Gujarat, India',
