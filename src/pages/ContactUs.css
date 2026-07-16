@@ -147,33 +147,35 @@
   }
 }
 
-/* Map Menu Overlay */
+/* Map Menu Overlay (extra layer on the map only) */
 .map-menu-overlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
   z-index: 20;
-  background: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  width: 90%;
-  max-width: 350px;
+  background: rgba(0, 0, 0, 0.75); /* Dark layer covering only the map */
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Square shaped card inside the map */
 .map-menu-content {
+  background: var(--color-midnight);
+  border: 1px solid var(--color-cyan);
+  border-radius: 0; /* Square boundaries */
   text-align: center;
   max-width: 400px;
-  width: 100%;
+  width: 90%;
+  padding: 2rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
 }
 
 .map-menu-content h3 {
   font-family: var(--font-primary);
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
+  color: white;
 }
 
 .map-menu-content p {
@@ -193,6 +195,8 @@
   border: 1px solid rgba(255,255,255,0.2);
   color: white;
   width: 100%;
+  border-radius: 0; /* Square button to match */
+  transition: all 0.3s;
 }
 
 .map-menu-close:hover {
