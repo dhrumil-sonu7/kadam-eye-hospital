@@ -62,6 +62,7 @@ export default function Navbar() {
             <motion.div
               className="brand-icon"
               whileHover={{ rotate: 360 }}
+              whileTap={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
               <Eye size={28} />
