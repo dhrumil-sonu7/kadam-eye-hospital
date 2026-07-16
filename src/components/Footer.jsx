@@ -81,10 +81,7 @@ export default function Footer() {
           <AnimatedSection variant="fadeUp" delay={0.3} className="footer-col">
             <h4 className="footer-heading">Contact Us</h4>
             <div className="footer-contact">
-              <div className="footer-contact-item">
-                <MapPin size={16} />
-                <span>B/H Railway Station, Sayajigunj, Vadodara - 390020</span>
-              </div>
+
               <div className="footer-contact-item">
                 <Phone size={16} />
                 <a href="tel:+910265-2794454" style={{ color: 'inherit', textDecoration: 'none' }}>+91-0265-2794454</a>
