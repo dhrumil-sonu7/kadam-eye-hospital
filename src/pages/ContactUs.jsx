@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import { motion } from 'framer-motion'
 import { MapPin, Phone, Mail, Clock, Navigation } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
@@ -209,7 +210,7 @@ export default function ContactUs() {
         </section>
       </div>
 
-      {showMapMenu && (
+      {showMapMenu && createPortal(
         <div className="map-menu-overlay">
           <div className="map-menu-content">
             <h3>Get Directions</h3>
@@ -233,7 +234,8 @@ export default function ContactUs() {
               Cancel
             </button>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </PageTransition>
   )
