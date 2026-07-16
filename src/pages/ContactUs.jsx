@@ -153,8 +153,9 @@ export default function ContactUs() {
               <div className="map-container glass-card" style={{ position: 'relative' }}>
                 {!showMapMenu && (
                   <div 
-                    style={{ position: 'absolute', inset: 0, zIndex: 10, cursor: 'pointer' }}
+                    style={{ position: 'absolute', inset: 0, zIndex: 10, cursor: 'pointer', backgroundColor: 'rgba(255, 255, 255, 0.01)' }}
                     onClick={() => setShowMapMenu(true)}
+                    onTouchEnd={(e) => { e.preventDefault(); setShowMapMenu(true); }}
                     title="Click to get directions"
                   />
                 )}

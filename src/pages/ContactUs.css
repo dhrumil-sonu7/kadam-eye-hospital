@@ -147,12 +147,12 @@
   }
 }
 
-/* Map Menu Overlay (extra layer on the map only) */
+/* Full-Screen Map Menu Modal */
 .map-menu-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: 20;
-  background: rgba(0, 0, 0, 0.75); /* Dark layer covering only the map */
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.75); /* Dark screen-wide overlay */
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
@@ -163,7 +163,7 @@
 .map-menu-content {
   background: var(--color-midnight);
   border: 1px solid var(--color-cyan);
-  border-radius: 0; /* Square boundaries */
+  border-radius: var(--radius-lg); /* Soft rounded corners */
   text-align: center;
   max-width: 400px;
   width: 90%;
@@ -195,7 +195,7 @@
   border: 1px solid rgba(255,255,255,0.2);
   color: white;
   width: 100%;
-  border-radius: 0; /* Square button to match */
+  border-radius: var(--radius-md); /* Soft rounded corners */
   transition: all 0.3s;
 }
 
