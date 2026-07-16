@@ -5,6 +5,11 @@ import AnimatedSection from '../components/AnimatedSection'
 import './LasikCentre.css'
 import useSEO from '../hooks/useSEO'
 
+import imgLasikMachine from '../assets/lasik/lasik_machine.png'
+import imgCorneaMap from '../assets/lasik/cornea_map.png'
+import imgEyeDoctor from '../assets/lasik/eye_doctor.png'
+import imgClearVision from '../assets/lasik/clear_vision.png'
+
 const benefits = [
   'Blade-free, painless procedure',
   'Spectacle-free clear vision',
@@ -83,7 +88,7 @@ export default function LasikCentre() {
               <AnimatedSection variant="fadeUp" delay={0.1}>
                 <div className="gallery-card glass-card">
                   <div className="gallery-img-container">
-                    <img src="/src/assets/lasik/lasik_machine.png" alt="Advanced LASIK Machine" loading="lazy" />
+                    <img src={imgLasikMachine} alt="Advanced LASIK Machine" loading="lazy" />
                   </div>
                   <div className="gallery-info">
                     <h4>Excimer Laser System</h4>
@@ -95,7 +100,7 @@ export default function LasikCentre() {
               <AnimatedSection variant="fadeUp" delay={0.2}>
                 <div className="gallery-card glass-card">
                   <div className="gallery-img-container">
-                    <img src="/src/assets/lasik/cornea_map.png" alt="Corneal Topography" loading="lazy" />
+                    <img src={imgCorneaMap} alt="Corneal Topography" loading="lazy" />
                   </div>
                   <div className="gallery-info">
                     <h4>3D Corneal Mapping</h4>
@@ -107,7 +112,7 @@ export default function LasikCentre() {
               <AnimatedSection variant="fadeUp" delay={0.3}>
                 <div className="gallery-card glass-card">
                   <div className="gallery-img-container">
-                    <img src="/src/assets/lasik/eye_doctor.png" alt="Ophthalmologist examining" loading="lazy" />
+                    <img src={imgEyeDoctor} alt="Ophthalmologist examining" loading="lazy" />
                   </div>
                   <div className="gallery-info">
                     <h4>Expert Consultation</h4>
@@ -119,7 +124,7 @@ export default function LasikCentre() {
               <AnimatedSection variant="fadeUp" delay={0.4}>
                 <div className="gallery-card glass-card">
                   <div className="gallery-img-container">
-                    <img src="/src/assets/lasik/clear_vision.png" alt="Clear Vision" loading="lazy" />
+                    <img src={imgClearVision} alt="Clear Vision" loading="lazy" />
                   </div>
                   <div className="gallery-info">
                     <h4>Spectacle Freedom</h4>
