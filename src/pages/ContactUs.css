@@ -150,15 +150,18 @@
 /* Map Menu Overlay */
 .map-menu-overlay {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 20;
   background: rgba(15, 23, 42, 0.95);
   backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   border-radius: var(--radius-lg);
   padding: 2rem;
+  width: 90%;
+  max-width: 350px;
 }
 
 .map-menu-content {
