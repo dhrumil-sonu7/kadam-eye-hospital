@@ -34,7 +34,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
-  padding: var(--space-xl) 0 var(--space-3xl);
+  padding: 0 0 var(--space-3xl);
+  margin-top: -2rem;
 }
 
 .hero-text {
