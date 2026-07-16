@@ -98,3 +98,63 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Gallery Grid */
+.lasik-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.gallery-card {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-img-container {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.gallery-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-card:hover .gallery-img-container img {
+  transform: scale(1.05);
+}
+
+.gallery-info {
+  padding: 1.5rem;
+}
+
+.gallery-info h4 {
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--color-gold);
+}
+
+.gallery-info p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 900px) {
+  .lasik-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .lasik-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}

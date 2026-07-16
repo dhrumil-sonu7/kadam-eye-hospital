@@ -70,6 +70,67 @@ export default function LasikCentre() {
           </div>
         </section>
 
+        {/* Equipment & Gallery */}
+        <section className="section" style={{ paddingTop: 0 }}>
+          <div className="container">
+            <AnimatedSection variant="fadeUp">
+              <div className="section-title">
+                <h2>Advanced Laser Technology</h2>
+              </div>
+            </AnimatedSection>
+
+            <div className="lasik-gallery-grid">
+              <AnimatedSection variant="fadeUp" delay={0.1}>
+                <div className="gallery-card glass-card">
+                  <div className="gallery-img-container">
+                    <img src="/src/assets/lasik/lasik_machine.png" alt="Advanced LASIK Machine" loading="lazy" />
+                  </div>
+                  <div className="gallery-info">
+                    <h4>Excimer Laser System</h4>
+                    <p>State-of-the-art laser technology for ultra-precise and safe vision correction.</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+              
+              <AnimatedSection variant="fadeUp" delay={0.2}>
+                <div className="gallery-card glass-card">
+                  <div className="gallery-img-container">
+                    <img src="/src/assets/lasik/cornea_map.png" alt="Corneal Topography" loading="lazy" />
+                  </div>
+                  <div className="gallery-info">
+                    <h4>3D Corneal Mapping</h4>
+                    <p>High-resolution wavefront mapping for fully customized personalized treatments.</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection variant="fadeUp" delay={0.3}>
+                <div className="gallery-card glass-card">
+                  <div className="gallery-img-container">
+                    <img src="/src/assets/lasik/eye_doctor.png" alt="Ophthalmologist examining" loading="lazy" />
+                  </div>
+                  <div className="gallery-info">
+                    <h4>Expert Consultation</h4>
+                    <p>Thorough pre-operative evaluation by our highly experienced refractive surgeons.</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection variant="fadeUp" delay={0.4}>
+                <div className="gallery-card glass-card">
+                  <div className="gallery-img-container">
+                    <img src="/src/assets/lasik/clear_vision.png" alt="Clear Vision" loading="lazy" />
+                  </div>
+                  <div className="gallery-info">
+                    <h4>Spectacle Freedom</h4>
+                    <p>Enjoy life without the hassle of glasses or contact lenses with fast recovery.</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            </div>
+          </div>
+        </section>
+
         {/* Benefits */}
         <section className="section" style={{ background: 'var(--color-navy)' }}>
           <div className="container">
