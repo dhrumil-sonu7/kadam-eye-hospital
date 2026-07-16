@@ -178,8 +178,8 @@ export default function ContactUs() {
                   <Phone size={32} className="contact-summary-icon" />
                   <div>
                     <h4>Call Us</h4>
-                    <p>+91-0265-2794454</p>
-                    <p>+91-0265-2794455</p>
+                    <p><a href="tel:+910265-2794454" style={{ color: 'inherit', textDecoration: 'none' }}>+91-0265-2794454</a></p>
+                    <p><a href="tel:+910265-2794455" style={{ color: 'inherit', textDecoration: 'none' }}>+91-0265-2794455</a></p>
                   </div>
                 </div>
                 <div className="contact-summary-divider" />
@@ -187,7 +187,7 @@ export default function ContactUs() {
                   <Mail size={32} className="contact-summary-icon" />
                   <div>
                     <h4>Email Us</h4>
-                    <p>kadameyehospital@yahoo.com</p>
+                    <p><a href="mailto:kadameyehospital@yahoo.com" style={{ color: 'inherit', textDecoration: 'none' }}>kadameyehospital@yahoo.com</a></p>
                   </div>
                 </div>
                 <div className="contact-summary-divider" />

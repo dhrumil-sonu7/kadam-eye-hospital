@@ -8,7 +8,7 @@ const navLinks = [
   { path: '/', label: 'Home' },
   { path: '/about-us', label: 'About Us' },
   { path: '/facilities', label: 'Facilities' },
-  { path: '/milestones', label: 'MilesTones' },
+  { path: '/milestones', label: 'Milestones' },
   { path: '/patient-information', label: 'Patient Information' },
   { path: '/ocularist-centre', label: 'Ocularist Centre' },
   { path: '/cornea-centre', label: 'Cornea Centre' },
@@ -37,11 +37,11 @@ export default function Navbar() {
         <div className="container top-bar-inner">
           <div className="top-bar-item">
             <Phone size={14} />
-            <span>+91-0265-2794454</span>
+            <a href="tel:+910265-2794454" style={{ color: 'inherit', textDecoration: 'none' }}>+91-0265-2794454</a>
           </div>
           <div className="top-bar-item">
             <Mail size={14} />
-            <span>kadameyehospital@yahoo.com</span>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kadameyehospital@yahoo.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>kadameyehospital@yahoo.com</a>
           </div>
           <div className="top-bar-item">
             <Clock size={14} />

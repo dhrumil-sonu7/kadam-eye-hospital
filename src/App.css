@@ -7,6 +7,7 @@
 
 /* --- Design Tokens --- */
 :root {
+  color-scheme: dark;
   /* Midnight Canvas */
   --color-midnight: #030712;
   --color-midnight-light: #0f172a;
@@ -71,6 +72,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 a {
@@ -378,11 +380,22 @@ ul {
   .container { padding: 0 var(--space-lg); }
   .section { padding: var(--space-3xl) 0; }
   :root { --navbar-height: 70px; }
-  .glass-card { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+  .glass-card {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(15, 23, 42, 0.75);
+  }
+  h1 { font-size: clamp(2rem, 8vw, 3rem); }
+  h2 { font-size: clamp(1.8rem, 7vw, 2.5rem); }
+  .btn {
+    padding: var(--space-sm) var(--space-xl);
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 480px) {
   html { font-size: 14px; }
+  .container { padding: 0 var(--space-md); }
 }
 
 /* Global Fix for Grid Cards */

@@ -17,6 +17,7 @@ const sections = [
     ],
     symptoms: ['Blurred or dim vision', 'Sensitivity to light and glare', 'Difficulty seeing at night', 'Seeing halos around lights', 'Fading of colours', 'Frequent changes in spectacle power'],
     treatments: ['Phacoemulsification (Phaco) surgery', 'Foldable IOL implantation', 'Multifocal IOL', 'Toric IOL for astigmatism', 'Micro-incision cataract surgery (MICS)'],
+    image: '/src/assets/patient/cataract.png'
   },
   {
     id: 'squint',
@@ -29,6 +30,7 @@ const sections = [
     ],
     symptoms: ['Eyes pointing in different directions', 'Double vision', 'Head tilting', 'Difficulty judging distances', 'Eye strain or fatigue'],
     treatments: ['Corrective spectacles', 'Orthoptic exercises', 'Prism glasses', 'Squint surgery', 'Botox injection (in select cases)'],
+    image: '/src/assets/patient/squint.png'
   },
   {
     id: 'corneal-transplant',
@@ -41,6 +43,7 @@ const sections = [
     ],
     symptoms: ['Cloudy or opaque cornea', 'Severe corneal scarring', 'Corneal ulcer not responding to treatment', 'Keratoconus (advanced)', 'Corneal dystrophy', 'Failed previous corneal transplant'],
     treatments: ['Penetrating keratoplasty (full thickness)', 'Lamellar keratoplasty (partial thickness)', 'DSAEK / DMEK (endothelial transplant)', 'Post-operative medical management', 'Long-term follow-up care'],
+    image: '/src/assets/patient/corneal_transplant.jpg'
   },
 ]
 
@@ -97,6 +100,11 @@ export default function PatientInfo() {
 
               <div className="patient-content-grid">
                 <AnimatedSection variant="fadeLeft" className="patient-text">
+                  {section.image && (
+                    <div className="patient-img-container">
+                      <img src={section.image} alt={section.title} className="patient-img glass-card" loading="lazy" />
+                    </div>
+                  )}
                   {section.content.map((p, j) => (
                     <p key={j}>{p}</p>
                   ))}

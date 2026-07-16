@@ -152,6 +152,9 @@
   overflow: hidden;
   border-top: 1px solid rgba(255,255,255,0.08);
   margin-top: 0.5rem;
+  background: rgba(10, 22, 40, 0.95);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
 }
 
 .nav-mobile-link {

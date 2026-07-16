@@ -8,7 +8,7 @@ const quickLinks = [
   { path: '/', label: 'Home' },
   { path: '/about-us', label: 'About Us' },
   { path: '/facilities', label: 'Facilities' },
-  { path: '/milestones', label: 'MilesTones' },
+  { path: '/milestones', label: 'Milestones' },
   { path: '/patient-information', label: 'Patient Information' },
   { path: '/contact-us', label: 'Contact Us' },
 ]
@@ -87,11 +87,11 @@ export default function Footer() {
               </div>
               <div className="footer-contact-item">
                 <Phone size={16} />
-                <span>+91-0265-2794454</span>
+                <a href="tel:+910265-2794454" style={{ color: 'inherit', textDecoration: 'none' }}>+91-0265-2794454</a>
               </div>
               <div className="footer-contact-item">
                 <Mail size={16} />
-                <span>kadameyehospital@yahoo.com</span>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kadameyehospital@yahoo.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>kadameyehospital@yahoo.com</a>
               </div>
               <div className="footer-contact-item">
                 <Clock size={16} />

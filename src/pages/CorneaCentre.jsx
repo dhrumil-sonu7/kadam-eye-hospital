@@ -72,6 +72,67 @@ export default function CorneaCentre() {
           </div>
         </section>
 
+        {/* Equipment & Gallery */}
+        <section className="section" style={{ paddingTop: 0 }}>
+          <div className="container">
+            <AnimatedSection variant="fadeUp">
+              <div className="section-title">
+                <h2>Advanced Diagnostics & Care</h2>
+              </div>
+            </AnimatedSection>
+
+            <div className="cornea-gallery-grid">
+              <AnimatedSection variant="fadeUp" delay={0.1}>
+                <div className="gallery-card glass-card">
+                  <div className="gallery-img-container">
+                    <img src="/src/assets/cornea/Kerato.jpg" alt="Keratoconus Evaluation" loading="lazy" />
+                  </div>
+                  <div className="gallery-info">
+                    <h4>Keratoconus Management</h4>
+                    <p>Advanced diagnostic tools to evaluate and monitor Keratoconus progression accurately.</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+              
+              <AnimatedSection variant="fadeUp" delay={0.2}>
+                <div className="gallery-card glass-card">
+                  <div className="gallery-img-container">
+                    <img src="/src/assets/cornea/OrbscanI.jpg" alt="Orbscan Topography" loading="lazy" />
+                  </div>
+                  <div className="gallery-info">
+                    <h4>Corneal Topography</h4>
+                    <p>High-resolution mapping of the cornea for precise surgical planning and disease detection.</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection variant="fadeUp" delay={0.3}>
+                <div className="gallery-card glass-card">
+                  <div className="gallery-img-container">
+                    <img src="/src/assets/cornea/corntransplant.jpg" alt="Corneal Transplant" loading="lazy" />
+                  </div>
+                  <div className="gallery-info">
+                    <h4>Corneal Transplants</h4>
+                    <p>State-of-the-art surgical treatments including PKP, DALK, and endothelial keratoplasty.</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection variant="fadeUp" delay={0.4}>
+                <div className="gallery-card glass-card">
+                  <div className="gallery-img-container">
+                    <img src="/src/assets/cornea/Intacsplacement.jpg" alt="Intacs Ring Placement" loading="lazy" />
+                  </div>
+                  <div className="gallery-info">
+                    <h4>Intacs Ring Segments</h4>
+                    <p>Minimally invasive surgical options for correcting irregular corneas and improving vision.</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            </div>
+          </div>
+        </section>
+
         {/* Conditions */}
         <section className="section" style={{ background: 'var(--color-navy)' }}>
           <div className="container">

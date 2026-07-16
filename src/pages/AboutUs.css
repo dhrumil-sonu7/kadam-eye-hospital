@@ -1,7 +1,7 @@
 /* Page Hero (shared across inner pages) */
 .page-hero {
   position: relative;
-  padding: calc(var(--navbar-height) + 4rem + 36px) 0 3rem;
+  padding: calc(var(--navbar-height) + 0.25rem) 0 1.5rem;
   background: linear-gradient(135deg, var(--color-midnight), var(--color-midnight-light));
   text-align: center;
   overflow: hidden;
@@ -92,5 +92,13 @@
 @media (max-width: 600px) {
   .highlights-grid {
     grid-template-columns: 1fr;
+  }
+
+  .page-hero {
+    padding: var(--navbar-height) 0 1rem;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
   }
 }
