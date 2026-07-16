@@ -213,7 +213,7 @@ export default function ContactUs() {
 
       {showMapMenu && createPortal(
         <div className="map-menu-overlay">
-          <div className="map-menu-content">
+          <div className="map-menu-content glass-card">
             <h3>Get Directions</h3>
             <p>Which branch would you like to visit?</p>
             <div className="map-menu-buttons">
