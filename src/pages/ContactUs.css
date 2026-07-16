@@ -146,3 +146,53 @@
     height: 1px;
   }
 }
+
+/* Map Menu Overlay */
+.map-menu-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.map-menu-content {
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.map-menu-content h3 {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.map-menu-content p {
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.map-menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.map-menu-close {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  width: 100%;
+}
+
+.map-menu-close:hover {
+  background: rgba(255,255,255,0.1);
+  color: white !important;
+}

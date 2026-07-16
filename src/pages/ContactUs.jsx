@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Phone, Mail, Clock, Navigation } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
@@ -40,6 +41,8 @@ const branches = [
 ]
 
 export default function ContactUs() {
+  const [showMapMenu, setShowMapMenu] = useState(false)
+
   useSEO({
     title: 'Contact Kadam Eye Hospital | Book an Appointment in Vadodara',
     description: 'Get in touch with Kadam Eye Hospital. Find addresses, phone numbers, and directions for our Akota, Dandia Bazar, and Nizampura branches in Vadodara.',
@@ -146,7 +149,40 @@ export default function ContactUs() {
               </div>
             </AnimatedSection>
             <AnimatedSection variant="scaleUp">
-              <div className="map-container glass-card">
+              <div className="map-container glass-card" style={{ position: 'relative' }}>
+                {!showMapMenu && (
+                  <div 
+                    style={{ position: 'absolute', inset: 0, zIndex: 10, cursor: 'pointer' }}
+                    onClick={() => setShowMapMenu(true)}
+                    title="Click to get directions"
+                  />
+                )}
+                {showMapMenu && (
+                  <div className="map-menu-overlay">
+                    <div className="map-menu-content">
+                      <h3>Get Directions</h3>
+                      <p>Which branch would you like to visit?</p>
+                      <div className="map-menu-buttons">
+                        {branches.map(b => (
+                          <a 
+                            key={b.name} 
+                            href={b.mapUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="btn btn-outline"
+                            style={{ borderColor: b.color, color: b.color, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}
+                            onClick={() => setShowMapMenu(false)}
+                          >
+                            <Navigation size={16} /> {b.name}
+                          </a>
+                        ))}
+                      </div>
+                      <button className="btn map-menu-close" onClick={() => setShowMapMenu(false)}>
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                )}
                 <iframe
                   title="Kadam Eye Hospital Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.1!2d73.2!3d22.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDE4JzAwLjAiTiA3M8KwMTInMDAuMCJF!5e0!3m2!1sen!2sin!4v1!5m2!1sen!2sin"
