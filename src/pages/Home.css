@@ -6,7 +6,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding-top: 1rem;
+  padding-top: 0;
 }
 
 .hero-bg {
@@ -34,7 +34,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
-  padding: var(--space-3xl) 0;
+  padding: var(--space-xl) 0 var(--space-3xl);
 }
 
 .hero-text {
