@@ -206,20 +206,17 @@
 /* ======= MOBILE BREAKPOINT (<= 768px) ======= */
 @media (max-width: 768px) {
   .scroll-hero-container {
-    height: 100vh; /* Ultra-tight scroll range on mobile */
+    height: auto;
     position: relative;
   }
 
   .sticky-wrapper {
-    position: sticky;
+    position: relative;
     top: 0;
-    height: 100vh;
-    padding-top: var(--navbar-height, 80px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    overflow: hidden;
+    height: auto;
+    padding-top: calc(var(--navbar-height, 84px) + 0.5rem);
+    padding-bottom: 0.5rem;
+    overflow: visible;
   }
 
   .scroll-layers-wrapper {
@@ -228,22 +225,22 @@
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    gap: 0.6rem;
-    padding: 0 1rem 1rem;
+    gap: 0.5rem;
+    padding: 0 1rem;
     width: 100%;
   }
 
-  /* 3D Eye Visual top edge sits EXACTLY 3.5rem from the headbar */
+  /* 3D Eye Visual on Top on Mobile */
   .eye-content-right {
     order: 1;
-    height: 170px;
-    margin-top: 3.5rem; /* Exactly 3.5rem from headbar */
+    height: 160px;
+    margin-top: 0.5rem;
     margin-bottom: 0.25rem;
   }
 
   .eye-layers-container {
-    width: 190px;
-    height: 190px;
+    width: 170px;
+    height: 170px;
   }
 
   /* Intro Hero Text Below Eye on Mobile */
