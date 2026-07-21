@@ -19,7 +19,7 @@ export default function ScrollLinkedHero() {
   // 1. Background Blur & Darken (Optimized: animating opacity instead of filter)
   const bgOpacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
 
-  // Eye transitions rightward slightly as it scales up, then restores
+  // Eye transitions rightward, scales up
   const eyeScale = useTransform(scrollYProgress, [0, 0.1, 0.85, 1], [1, 1.2, 1.2, 1]);
   const eyeX = useTransform(scrollYProgress, [0, 0.1, 0.85, 1], [0, 50, 50, 0]);
   
@@ -38,23 +38,31 @@ export default function ScrollLinkedHero() {
   const text4Y = useTransform(scrollYProgress, [0.65, 0.75, 0.8, 0.85], [50, 0, 0, -50])
 
   // Anatomy Layers Transforms (reverts at the end)
+  // Explodes out into Z-space with dynamic individual rotations
   const scleraScale = useTransform(scrollYProgress, [0.1, 0.8, 0.85, 1], [1, 1.5, 1.5, 1])
   const scleraOpacity = useTransform(scrollYProgress, [0.75, 0.8, 0.85, 1], [1, 0.2, 0.2, 1])
   
   const corneaOpacity = useTransform(scrollYProgress, [0, 0.15, 0.25, 0.85, 1], [1, 1, 0, 0, 1])
-  const corneaZ = useTransform(scrollYProgress, [0.15, 0.25, 0.85, 1], [0, 100, 100, 0])
+  const corneaZ = useTransform(scrollYProgress, [0.15, 0.25, 0.85, 1], [0, 450, 450, 0])
+  const corneaRotateX = useTransform(scrollYProgress, [0.15, 0.25, 0.85, 1], [0, -15, -15, 0])
+  const corneaRotateY = useTransform(scrollYProgress, [0.15, 0.25, 0.85, 1], [0, 10, 10, 0])
   
   const irisScale = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 1], [1, 1.1, 1.1, 1])
   const irisOpacity = useTransform(scrollYProgress, [0, 0.35, 0.45, 0.85, 1], [1, 1, 0, 0, 1])
-  const irisZ = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 1], [0, 150, 150, 0])
+  const irisZ = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 1], [0, 300, 300, 0])
+  const irisRotateY = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 1], [0, -10, -10, 0])
+  const irisRotateX = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 1], [0, 5, 5, 0])
   
   const lensScale = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 1], [1, 1.1, 1.1, 1])
   const lensOpacity = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.55, 0.65, 0.85, 1], [0, 0, 1, 1, 0, 0, 0])
-  const lensZ = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 1], [0, 200, 200, 0])
+  const lensZ = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 1], [0, 150, 150, 0])
+  const lensRotateX = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 1], [0, 20, 20, 0])
+  const lensRotateY = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 1], [0, -15, -15, 0])
   
   const retinaScale = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 1], [1, 1, 1.2, 1.2, 1])
   const retinaOpacity = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 1], [0, 0, 1, 1, 0])
-  const retinaZ = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 1], [-100, -100, 0, 0, -100])
+  const retinaZ = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 1], [0, 0, -150, -150, 0])
+  const retinaRotateX = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 1], [0, 0, -10, -10, 0])
 
   // Extract static Math.random values to prevent re-renders (Performance)
   const particles = React.useMemo(() => {
@@ -167,7 +175,7 @@ export default function ScrollLinkedHero() {
 
           {/* RIGHT SIDE: THE EYE */}
           <motion.div className="hero-visual eye-content-right" style={{ scale: eyeScale, x: eyeX }}>
-            <div className="eye-layers-container">
+            <motion.div className="eye-layers-container">
               
               {/* High Performance CSS Glow (replaces SVG drop-shadow) */}
               <div 
@@ -183,7 +191,7 @@ export default function ScrollLinkedHero() {
               />
               
               {/* Layer 5: Retina (Hidden initially) */}
-              <motion.div className="eye-layer" style={{ scale: retinaScale, opacity: retinaOpacity, z: retinaZ, zIndex: 1 }}>
+              <motion.div className="eye-layer" style={{ scale: retinaScale, opacity: retinaOpacity, z: retinaZ, rotateX: retinaRotateX, zIndex: 1 }}>
                 <svg viewBox="0 0 200 100" className="anatomy-svg">
                   <circle cx="100" cy="50" r="30" fill="#0f172a" />
                   <circle cx="100" cy="50" r="28" fill="none" stroke="#ff0055" strokeWidth="1" strokeDasharray="2 2"/>
@@ -194,7 +202,7 @@ export default function ScrollLinkedHero() {
               </motion.div>
 
               {/* Layer 4: Lens (Hidden initially) */}
-              <motion.div className="eye-layer" style={{ scale: lensScale, opacity: lensOpacity, z: lensZ, zIndex: 2 }}>
+              <motion.div className="eye-layer" style={{ scale: lensScale, opacity: lensOpacity, z: lensZ, rotateX: lensRotateX, rotateY: lensRotateY, zIndex: 2 }}>
                 <svg viewBox="0 0 200 100" className="anatomy-svg">
                   <ellipse cx="100" cy="50" rx="20" ry="30" fill="rgba(0, 240, 255, 0.2)" stroke="#00f0ff" strokeWidth="1" />
                   <ellipse cx="100" cy="50" rx="10" ry="20" fill="rgba(255, 255, 255, 0.4)" />
@@ -202,7 +210,7 @@ export default function ScrollLinkedHero() {
               </motion.div>
 
               {/* Layer 3: Iris & Pupil (Visible initially) */}
-              <motion.div className="eye-layer" style={{ scale: irisScale, opacity: irisOpacity, z: irisZ, zIndex: 3 }}>
+              <motion.div className="eye-layer" style={{ scale: irisScale, opacity: irisOpacity, z: irisZ, rotateX: irisRotateX, rotateY: irisRotateY, zIndex: 3 }}>
                 <svg viewBox="0 0 200 100" className="anatomy-svg">
                   <motion.circle
                     cx="100"
@@ -248,7 +256,7 @@ export default function ScrollLinkedHero() {
               </motion.div>
 
               {/* Layer 2: Cornea (Visible initially) */}
-              <motion.div className="eye-layer" style={{ scale: scleraScale, opacity: corneaOpacity, z: corneaZ, zIndex: 4 }}>
+              <motion.div className="eye-layer" style={{ scale: scleraScale, opacity: corneaOpacity, z: corneaZ, rotateX: corneaRotateX, rotateY: corneaRotateY, zIndex: 4 }}>
                 <svg viewBox="0 0 200 100" className="anatomy-svg">
                   <motion.circle
                     cx="108"
@@ -309,7 +317,7 @@ export default function ScrollLinkedHero() {
                 </svg>
               </motion.div>
               
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
