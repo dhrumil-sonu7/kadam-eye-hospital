@@ -206,7 +206,7 @@
 /* ======= MOBILE BREAKPOINT (<= 768px) ======= */
 @media (max-width: 768px) {
   .scroll-hero-container {
-    height: 160vh; /* Reduced height on mobile to eliminate gap */
+    height: 120vh; /* Tight scroll range on mobile */
     position: relative;
   }
 
