@@ -19,7 +19,7 @@
   perspective: 1000px;
 }
 
-/* Base grid layout for desktop */
+/* Base grid layout for desktop (> 992px) */
 .scroll-layers-wrapper {
   width: 100%;
   max-width: 1200px;
@@ -144,67 +144,8 @@
   overflow: visible;
 }
 
-/* ======= TABLET & IPAD BREAKPOINT (768px - 992px) ======= */
+/* ======= TABLET & MOBILE RESPONSIVE BREAKPOINT (<= 992px) ======= */
 @media (max-width: 992px) {
-  .scroll-hero-container {
-    height: 220vh;
-  }
-
-  .sticky-wrapper {
-    padding-top: 4.5rem;
-  }
-
-  .scroll-layers-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 1.5rem;
-    padding: 0 1.25rem;
-  }
-
-  .eye-content-right {
-    order: 1;
-    height: 240px;
-    margin: 0 auto;
-  }
-
-  .eye-layers-container {
-    width: 250px;
-    height: 250px;
-  }
-
-  .hero-content-left {
-    order: 2;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .anatomy-texts-left {
-    order: 2;
-    position: relative;
-    height: 160px;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .anatomy-step {
-    max-width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    text-align: center;
-  }
-}
-
-/* ======= MOBILE BREAKPOINT (<= 768px) ======= */
-@media (max-width: 768px) {
   .scroll-hero-container {
     height: auto;
     min-height: auto;
@@ -227,55 +168,34 @@
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    gap: 0.25rem;
+    gap: 0.5rem;
     padding: 0 1rem;
     width: 100%;
   }
 
-  /* Intro Hero Text on Top on Mobile */
+  /* 1. Intro Hero Text on Top */
   .hero-content-left {
     order: 1;
     width: 100%;
-    max-width: 480px;
+    max-width: 540px;
     margin: 0 auto;
   }
 
   .hero-badge {
     padding: 4px 12px;
     font-size: 0.75rem;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.35rem;
   }
 
   .hero-text h1 {
-    font-size: 1.6rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .hero-subtitle {
-    font-size: 0.82rem;
-    line-height: 1.45;
-    margin-bottom: 0.4rem;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  /* 3D Eye Visual in Middle on Mobile */
-  .eye-content-right {
-    order: 2;
-    height: 120px;
-    margin: 0 auto;
-  }
-
-  .eye-layers-container {
-    width: 130px;
-    height: 130px;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    margin-bottom: 0.35rem;
   }
 
   .hero-subtitle {
     font-size: 0.85rem;
     line-height: 1.5;
+    margin-bottom: 0.5rem;
   }
 
   .hero-buttons {
@@ -283,55 +203,49 @@
     gap: 0.5rem;
   }
 
-  /* Step Texts Below 3D Eye on Mobile */
-  .anatomy-texts-left {
+  /* 2. Eye Visual directly below buttons */
+  .eye-content-right {
     order: 2;
+    height: 150px;
+    margin: 0.5rem auto 0;
+  }
+
+  .eye-layers-container {
+    width: 160px;
+    height: 160px;
+  }
+
+  /* 3. Anatomy Texts */
+  .anatomy-texts-left {
+    order: 3;
     position: relative;
     width: 100%;
-    max-width: 480px;
-    height: 150px;
-    margin: 0.25rem auto 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .anatomy-step {
-    max-width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    text-align: center;
-    padding: 0 0.5rem;
-  }
-
-  .anatomy-step h2 {
-    font-size: 1.4rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .anatomy-step p {
-    font-size: 0.85rem;
-    line-height: 1.45;
+    max-width: 540px;
+    height: auto;
+    min-height: 0;
+    margin: 0 auto;
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
   .scroll-layers-wrapper {
     padding: 0 0.75rem;
-    gap: 0.5rem;
+    gap: 0.35rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.55rem;
   }
 
   .eye-content-right {
-    height: 155px;
-    margin-top: 3.5rem;
+    height: 130px;
+    margin: 0.25rem auto 0;
   }
 
   .eye-layers-container {
-    width: 165px;
-    height: 165px;
+    width: 140px;
+    height: 140px;
   }
 
   .hero-buttons {
@@ -341,7 +255,7 @@
   }
 
   .hero-buttons .btn {
-    padding: 0.55rem 0.85rem;
+    padding: 0.5rem 0.85rem;
     font-size: 0.78rem;
   }
 }
