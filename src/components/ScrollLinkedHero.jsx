@@ -12,59 +12,57 @@ export default function ScrollLinkedHero() {
     offset: ["start start", "end end"]
   })
 
-  // Hero Content Fades Out smoothly as user scrolls past intro
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.15, 0.25, 0.85, 1], [1, 1, 0, 0, 1]);
-  const heroY = useTransform(scrollYProgress, [0, 0.15, 0.25, 0.85, 1], [0, 0, -40, -40, 0]);
+  // 1. Hero Content Fades Out smoothly as user scrolls past intro
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.10, 0.20, 1], [1, 1, 0, 0]);
+  const heroY = useTransform(scrollYProgress, [0, 0.10, 0.20], [0, 0, -30]);
   
-  // 1. Background Blur & Darken (Optimized: animating opacity instead of filter)
-  const bgOpacity = useTransform(scrollYProgress, [0, 0.2, 0.85, 1], [0, 1, 1, 0]);
+  // 2. Full Background Blur & Darken during 3D scroll animation frames (unblurs at progress 0.88-1.0)
+  const bgOpacity = useTransform(scrollYProgress, [0, 0.15, 0.25, 0.85, 0.96], [0, 1, 1, 1, 0]);
 
-  // Eye transitions rightward, scales up
-  const eyeScale = useTransform(scrollYProgress, [0, 0.2, 0.85, 1], [1, 1.15, 1.15, 1]);
-  const eyeX = useTransform(scrollYProgress, [0, 0.2, 0.85, 1], [0, 40, 40, 0]);
+  // 3. Eye visual enlarges & centers during 3D scroll animation
+  const eyeScale = useTransform(scrollYProgress, [0, 0.15, 0.3, 0.85, 0.96], [1, 1.25, 1.35, 1.35, 1]);
+  const eyeX = useTransform(scrollYProgress, [0, 0.15, 0.85, 0.96], [0, 20, 20, 0]);
   
-  // Anatomy Texts Opacities
-  // We offset the start slightly after hero fades out
-  const text1Opacity = useTransform(scrollYProgress, [0.2, 0.28, 0.38, 0.42], [0, 1, 0, 0])
-  const text1Y = useTransform(scrollYProgress, [0.2, 0.28, 0.38, 0.42], [40, 0, -40, -40])
+  // 4. Anatomy Step Texts Opacities & Verticals
+  const text1Opacity = useTransform(scrollYProgress, [0.18, 0.24, 0.34, 0.38], [0, 1, 1, 0])
+  const text1Y = useTransform(scrollYProgress, [0.18, 0.24, 0.34, 0.38], [30, 0, 0, -30])
   
-  const text2Opacity = useTransform(scrollYProgress, [0.38, 0.45, 0.55, 0.6], [0, 1, 0, 0])
-  const text2Y = useTransform(scrollYProgress, [0.38, 0.45, 0.55, 0.6], [40, 0, -40, -40])
+  const text2Opacity = useTransform(scrollYProgress, [0.38, 0.44, 0.54, 0.58], [0, 1, 1, 0])
+  const text2Y = useTransform(scrollYProgress, [0.38, 0.44, 0.54, 0.58], [30, 0, 0, -30])
   
-  const text3Opacity = useTransform(scrollYProgress, [0.55, 0.62, 0.72, 0.76], [0, 1, 0, 0])
-  const text3Y = useTransform(scrollYProgress, [0.55, 0.62, 0.72, 0.76], [40, 0, -40, -40])
+  const text3Opacity = useTransform(scrollYProgress, [0.58, 0.64, 0.74, 0.78], [0, 1, 1, 0])
+  const text3Y = useTransform(scrollYProgress, [0.58, 0.64, 0.74, 0.78], [30, 0, 0, -30])
   
-  const text4Opacity = useTransform(scrollYProgress, [0.72, 0.78, 0.84, 0.88], [0, 1, 1, 0])
-  const text4Y = useTransform(scrollYProgress, [0.72, 0.78, 0.84, 0.88], [40, 0, 0, -40])
+  const text4Opacity = useTransform(scrollYProgress, [0.78, 0.82, 0.88, 0.92], [0, 1, 1, 0])
+  const text4Y = useTransform(scrollYProgress, [0.78, 0.82, 0.88, 0.92], [30, 0, 0, -30])
 
-  // Anatomy Layers Transforms (reverts at the end)
-  // Explodes out into Z-space with dynamic individual rotations
-  const scleraScale = useTransform(scrollYProgress, [0.1, 0.8, 0.85, 1], [1, 1.5, 1.5, 1])
-  const scleraOpacity = useTransform(scrollYProgress, [0.75, 0.8, 0.85, 1], [1, 0.2, 0.2, 1])
+  // 5. 3D Anatomy Layers Z-Explosion Transforms (reverts after last frame)
+  const scleraScale = useTransform(scrollYProgress, [0.1, 0.8, 0.85, 0.95], [1, 1.5, 1.5, 1])
+  const scleraOpacity = useTransform(scrollYProgress, [0.75, 0.8, 0.85, 0.95], [1, 0.2, 0.2, 1])
   
-  const corneaOpacity = useTransform(scrollYProgress, [0, 0.15, 0.25, 0.85, 1], [1, 1, 0, 0, 1])
-  const corneaZ = useTransform(scrollYProgress, [0.15, 0.25, 0.85, 1], [0, 450, 450, 0])
-  const corneaRotateX = useTransform(scrollYProgress, [0.15, 0.25, 0.85, 1], [0, -15, -15, 0])
-  const corneaRotateY = useTransform(scrollYProgress, [0.15, 0.25, 0.85, 1], [0, 10, 10, 0])
+  const corneaOpacity = useTransform(scrollYProgress, [0, 0.15, 0.25, 0.85, 0.95], [1, 1, 0, 0, 1])
+  const corneaZ = useTransform(scrollYProgress, [0.15, 0.25, 0.85, 0.95], [0, 450, 450, 0])
+  const corneaRotateX = useTransform(scrollYProgress, [0.15, 0.25, 0.85, 0.95], [0, -15, -15, 0])
+  const corneaRotateY = useTransform(scrollYProgress, [0.15, 0.25, 0.85, 0.95], [0, 10, 10, 0])
   
-  const irisScale = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 1], [1, 1.1, 1.1, 1])
-  const irisOpacity = useTransform(scrollYProgress, [0, 0.35, 0.45, 0.85, 1], [1, 1, 0, 0, 1])
-  const irisZ = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 1], [0, 300, 300, 0])
-  const irisRotateY = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 1], [0, -10, -10, 0])
-  const irisRotateX = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 1], [0, 5, 5, 0])
+  const irisScale = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 0.95], [1, 1.1, 1.1, 1])
+  const irisOpacity = useTransform(scrollYProgress, [0, 0.35, 0.45, 0.85, 0.95], [1, 1, 0, 0, 1])
+  const irisZ = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 0.95], [0, 300, 300, 0])
+  const irisRotateY = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 0.95], [0, -10, -10, 0])
+  const irisRotateX = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 0.95], [0, 5, 5, 0])
   
-  const lensScale = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 1], [1, 1.1, 1.1, 1])
-  const lensOpacity = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.55, 0.65, 0.85, 1], [0, 0, 1, 1, 0, 0, 0])
-  const lensZ = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 1], [0, 150, 150, 0])
-  const lensRotateX = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 1], [0, 20, 20, 0])
-  const lensRotateY = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 1], [0, -15, -15, 0])
+  const lensScale = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 0.95], [1, 1.1, 1.1, 1])
+  const lensOpacity = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.55, 0.65, 0.85, 0.95], [0, 0, 1, 1, 0, 0, 0])
+  const lensZ = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 0.95], [0, 150, 150, 0])
+  const lensRotateX = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 0.95], [0, 20, 20, 0])
+  const lensRotateY = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 0.95], [0, -15, -15, 0])
   
-  const retinaScale = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 1], [1, 1, 1.2, 1.2, 1])
-  const retinaOpacity = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 1], [0, 0, 1, 1, 0])
-  const retinaZ = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 1], [0, 0, -150, -150, 0])
-  const retinaRotateX = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 1], [0, 0, -10, -10, 0])
+  const retinaScale = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 0.95], [1, 1, 1.2, 1.2, 1])
+  const retinaOpacity = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 0.95], [0, 0, 1, 1, 0])
+  const retinaZ = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 0.95], [0, 0, -150, -150, 0])
+  const retinaRotateX = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 0.95], [0, 0, -10, -10, 0])
 
-  // Extract static Math.random values to prevent re-renders (Performance)
+  // Static particles for GPU performance
   const particles = React.useMemo(() => {
     return [...Array(12)].map(() => ({
       left: `${Math.random() * 100}%`,
@@ -80,7 +78,7 @@ export default function ScrollLinkedHero() {
     <div className="scroll-hero-container" ref={containerRef}>
       <motion.div className="sticky-wrapper">
         
-        {/* Base Background (Static) */}
+        {/* Base Background */}
         <div className="hero-bg">
           <div className="hero-particles">
             {particles.map((p, i) => (
@@ -111,13 +109,14 @@ export default function ScrollLinkedHero() {
           <div className="bg-grid" />
         </div>
 
-        {/* Blur Overlay (GPU Accelerated Fade) */}
+        {/* Full Dark Blur Overlay during 3D Anatomy Mode */}
         <motion.div 
           style={{ 
             position: 'absolute',
             inset: 0,
-            backdropFilter: 'blur(40px) brightness(0.2)',
-            WebkitBackdropFilter: 'blur(40px) brightness(0.2)',
+            background: 'rgba(3, 7, 18, 0.92)',
+            backdropFilter: 'blur(35px) brightness(0.12)',
+            WebkitBackdropFilter: 'blur(35px) brightness(0.12)',
             opacity: bgOpacity,
             willChange: 'opacity',
             pointerEvents: 'none',
@@ -125,13 +124,13 @@ export default function ScrollLinkedHero() {
           }} 
         />
 
-        {/* SINGLE GRID WRAPPER */}
+        {/* MAIN HERO & ANATOMY WRAPPER */}
         <div className="container scroll-layers-wrapper">
           
-          {/* LEFT SIDE: HERO CONTENT */}
+          {/* INTRO HERO TEXT */}
           <motion.div 
             className="hero-text hero-content-left"
-            style={{ opacity: heroOpacity, y: heroY, pointerEvents: heroOpacity === 0 ? 'none' : 'auto' }}
+            style={{ opacity: heroOpacity, y: heroY }}
           >
             <div className="hero-badge">
               <Star size={14} /> Since 1982 — Trusted Eye Care
@@ -153,7 +152,7 @@ export default function ScrollLinkedHero() {
             </div>
           </motion.div>
 
-          {/* LEFT SIDE: ANATOMY TEXTS */}
+          {/* ANATOMY STEP TEXTS (Display directly below 3D eye on mobile) */}
           <div className="anatomy-texts-left">
             <motion.div className="anatomy-step" style={{ opacity: text1Opacity, y: text1Y }}>
               <h2 className="gradient-text">The Human Eye</h2>
@@ -173,11 +172,10 @@ export default function ScrollLinkedHero() {
             </motion.div>
           </div>
 
-          {/* RIGHT SIDE: THE EYE */}
+          {/* 3D EYE GRAPHIC */}
           <motion.div className="hero-visual eye-content-right" style={{ scale: eyeScale, x: eyeX }}>
             <motion.div className="eye-layers-container">
               
-              {/* High Performance CSS Glow (replaces SVG drop-shadow) */}
               <div 
                 style={{
                   position: 'absolute',
@@ -190,7 +188,7 @@ export default function ScrollLinkedHero() {
                 }}
               />
               
-              {/* Layer 5: Retina (Hidden initially) */}
+              {/* Layer 5: Retina */}
               <motion.div className="eye-layer" style={{ scale: retinaScale, opacity: retinaOpacity, z: retinaZ, rotateX: retinaRotateX, zIndex: 1 }}>
                 <svg viewBox="0 0 200 100" className="anatomy-svg">
                   <circle cx="100" cy="50" r="30" fill="#0f172a" />
@@ -201,7 +199,7 @@ export default function ScrollLinkedHero() {
                 </svg>
               </motion.div>
 
-              {/* Layer 4: Lens (Hidden initially) */}
+              {/* Layer 4: Lens */}
               <motion.div className="eye-layer" style={{ scale: lensScale, opacity: lensOpacity, z: lensZ, rotateX: lensRotateX, rotateY: lensRotateY, zIndex: 2 }}>
                 <svg viewBox="0 0 200 100" className="anatomy-svg">
                   <ellipse cx="100" cy="50" rx="20" ry="30" fill="rgba(0, 240, 255, 0.2)" stroke="#00f0ff" strokeWidth="1" />
@@ -209,7 +207,7 @@ export default function ScrollLinkedHero() {
                 </svg>
               </motion.div>
 
-              {/* Layer 3: Iris & Pupil (Visible initially) */}
+              {/* Layer 3: Iris & Pupil */}
               <motion.div className="eye-layer" style={{ scale: irisScale, opacity: irisOpacity, z: irisZ, rotateX: irisRotateX, rotateY: irisRotateY, zIndex: 3 }}>
                 <svg viewBox="0 0 200 100" className="anatomy-svg">
                   <motion.circle
@@ -255,7 +253,7 @@ export default function ScrollLinkedHero() {
                 </svg>
               </motion.div>
 
-              {/* Layer 2: Cornea (Visible initially) */}
+              {/* Layer 2: Cornea */}
               <motion.div className="eye-layer" style={{ scale: scleraScale, opacity: corneaOpacity, z: corneaZ, rotateX: corneaRotateX, rotateY: corneaRotateY, zIndex: 4 }}>
                 <svg viewBox="0 0 200 100" className="anatomy-svg">
                   <motion.circle
@@ -279,7 +277,7 @@ export default function ScrollLinkedHero() {
                 </svg>
               </motion.div>
 
-              {/* Layer 1: Sclera & Outer Eye (Visible initially) */}
+              {/* Layer 1: Sclera & Outer Eye */}
               <motion.div className="eye-layer" style={{ scale: scleraScale, opacity: scleraOpacity, zIndex: 5 }}>
                 <svg viewBox="0 0 200 100" className="anatomy-svg">
                   <motion.path
