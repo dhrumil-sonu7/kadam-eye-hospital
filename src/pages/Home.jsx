@@ -4,8 +4,9 @@ import { Eye, Stethoscope, Microscope, Heart, Users, Award, ArrowRight, Star, Za
 import PageTransition from '../components/PageTransition'
 import AnimatedSection, { StaggerContainer, StaggerItem } from '../components/AnimatedSection'
 import AnimatedCounter from '../components/AnimatedCounter'
-import EyeAnimation from '../components/EyeAnimation'
+import ScrollLinkedHero from '../components/ScrollLinkedHero'
 import DoctorCard from '../components/DoctorCard'
+import CentresBento from '../components/CentresBento'
 import './Home.css'
 import docSubhash from '../assets/doctors/Subhash.jpg'
 import docSunita from '../assets/doctors/Sunita.jpg'
@@ -61,105 +62,8 @@ export default function Home() {
   return (
     <PageTransition>
       <div className="page-wrapper home-page">
-        {/* ======= HERO SECTION ======= */}
-        <section className="hero">
-          <div className="hero-bg">
-            <div className="hero-particles">
-              {[...Array(12)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="particle"
-                  style={{
-                    position: 'absolute',
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    willChange: 'transform, opacity'
-                  }}
-                  animate={{
-                    y: [0, -40, 0],
-                    opacity: [0.1, 0.5, 0.1],
-                    scale: [0.8, 1.5, 0.8]
-                  }}
-                  transition={{
-                    duration: Math.random() * 4 + 3,
-                    repeat: Infinity,
-                    delay: Math.random() * 3,
-                  }}
-                >
-                  <Eye 
-                    size={Math.random() * 15 + 10} 
-                    color={['rgba(0, 240, 255, 0.6)', 'rgba(255, 0, 85, 0.6)', 'rgba(255, 215, 0, 0.6)'][Math.floor(Math.random() * 3)]} 
-                  />
-                </motion.div>
-              ))}
-            </div>
-            <div className="bg-grid" />
-          </div>
-
-          <div className="container hero-content">
-            <div className="hero-text">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="hero-badge"
-              >
-                <Star size={14} /> Since 1982 — Trusted Eye Care
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-              >
-                Welcome To <br />
-                <span className="gradient-text">Kadam Eye Hospital</span>
-              </motion.h1>
-
-              <motion.p
-                className="hero-subtitle"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-              >
-                A reputed Eye Hospital at Vadodara is situated at heart of the city, Behind Railway Station. The hospital has a team of well qualified and experienced surgeon.
-              </motion.p>
-
-              <motion.div
-                className="hero-buttons"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-              >
-                <Link to="/contact-us" className="btn btn-primary">
-                  Book Appointment <ArrowRight size={18} />
-                </Link>
-                <Link to="/about-us" className="btn btn-outline">
-                  Learn More
-                </Link>
-              </motion.div>
-            </div>
-
-            <motion.div
-              className="hero-visual"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <EyeAnimation />
-            </motion.div>
-          </div>
-
-          <motion.div
-            className="hero-scroll-indicator"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
-            <div className="scroll-mouse">
-              <div className="scroll-wheel" />
-            </div>
-          </motion.div>
-        </section>
+        {/* ======= SCROLL LINKED HERO ======= */}
+        <ScrollLinkedHero />
 
         {/* ======= STATS SECTION ======= */}
         <section className="stats-section">
@@ -174,14 +78,13 @@ export default function Home() {
         {/* ======= WELCOME SECTION ======= */}
         <section className="section welcome-section">
           <div className="container">
-            <AnimatedSection variant="fadeUp">
-              <div className="section-title">
+            <AnimatedSection variant="fadeUp" className="apple-glass-sheet">
+              <div className="section-title apple-section-title">
                 <h2>Welcome To Kadam Hospital</h2>
                 <p>World-class eye care in the heart of Vadodara</p>
               </div>
-            </AnimatedSection>
 
-            <div className="welcome-content">
+              <div className="welcome-content">
               <AnimatedSection variant="fadeUp" className="welcome-text">
                 <p>
                   A reputed Eye Hospital at Vadodara is situated at heart of the city, Behind Railway Station. The hospital has a team of well qualified and experienced surgeon.
@@ -220,7 +123,8 @@ export default function Home() {
                   </div>
                 </div>
               </AnimatedSection>
-            </div>
+              </div>
+            </AnimatedSection>
           </div>
         </section>
 
@@ -250,45 +154,7 @@ export default function Home() {
         </section>
 
         {/* ======= CENTRES / SPECIALITIES ======= */}
-        <section className="section centres-section">
-          <div className="container">
-            <AnimatedSection variant="fadeUp">
-              <div className="section-title">
-                <h2>Centres &amp; Specialities</h2>
-                <p>Comprehensive eye care across all specialities</p>
-              </div>
-            </AnimatedSection>
-
-            <div className="centres-grid">
-              {centres.map((centre, i) => {
-                const CardContent = (
-                  <motion.div
-                    className="centre-card glass-card"
-                  >
-                    <div className="centre-icon" style={{ background: `${centre.color}15`, color: centre.color }}>
-                      {centre.icon}
-                    </div>
-                    <h4>{centre.title}</h4>
-                    <p>{centre.desc}</p>
-                    <div className="centre-line" style={{ background: centre.color }} />
-                  </motion.div>
-                )
-                
-                return (
-                  <AnimatedSection key={i} variant="fadeUp" delay={i * 0.1}>
-                    {centre.path ? (
-                      <Link to={centre.path} style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}>
-                        {CardContent}
-                      </Link>
-                    ) : (
-                      CardContent
-                    )}
-                  </AnimatedSection>
-                )
-              })}
-            </div>
-          </div>
-        </section>
+        <CentresBento />
 
         {/* ======= CTA SECTION ======= */}
         <section className="cta-section">
