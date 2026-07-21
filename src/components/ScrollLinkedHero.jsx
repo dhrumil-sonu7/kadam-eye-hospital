@@ -12,55 +12,55 @@ export default function ScrollLinkedHero() {
     offset: ["start start", "end end"]
   })
 
-  // 1. Hero Content Fades Out smoothly as user scrolls past intro
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.10, 0.20, 1], [1, 1, 0, 0]);
-  const heroY = useTransform(scrollYProgress, [0, 0.10, 0.20], [0, 0, -30]);
+  // 1. Hero Content Fades Out during 3D steps, then lands BACK on main hero landing page at 0.80-0.92
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.10, 0.20, 0.80, 0.92], [1, 1, 0, 0, 1]);
+  const heroY = useTransform(scrollYProgress, [0, 0.10, 0.20, 0.80, 0.92], [0, 0, -30, -30, 0]);
   
-  // 2. Full Background Blur & Darken during 3D scroll animation frames (unblurs at progress 0.88-1.0)
-  const bgOpacity = useTransform(scrollYProgress, [0, 0.15, 0.25, 0.85, 0.96], [0, 1, 1, 1, 0]);
+  // 2. Full Background Blur & Darken during 3D scroll animation frames (unblurs back to landing hero at 0.80-0.92)
+  const bgOpacity = useTransform(scrollYProgress, [0, 0.15, 0.25, 0.80, 0.92], [0, 1, 1, 1, 0]);
 
-  // 3. Eye visual enlarges & centers during 3D scroll animation
-  const eyeScale = useTransform(scrollYProgress, [0, 0.15, 0.3, 0.85, 0.96], [1, 1.25, 1.35, 1.35, 1]);
-  const eyeX = useTransform(scrollYProgress, [0, 0.15, 0.85, 0.96], [0, 20, 20, 0]);
+  // 3. Eye visual enlarges & centers during 3D scroll animation, then returns to 1 at 0.80-0.92
+  const eyeScale = useTransform(scrollYProgress, [0, 0.15, 0.3, 0.80, 0.92], [1, 1.25, 1.35, 1.35, 1]);
+  const eyeX = useTransform(scrollYProgress, [0, 0.15, 0.80, 0.92], [0, 20, 20, 0]);
   
-  // 4. Anatomy Step Texts Opacities & Verticals
-  const text1Opacity = useTransform(scrollYProgress, [0.18, 0.24, 0.34, 0.38], [0, 1, 1, 0])
-  const text1Y = useTransform(scrollYProgress, [0.18, 0.24, 0.34, 0.38], [30, 0, 0, -30])
+  // 4. Anatomy Step Texts Opacities & Verticals (Step 4 finishes before hero returns)
+  const text1Opacity = useTransform(scrollYProgress, [0.18, 0.24, 0.32, 0.35], [0, 1, 1, 0])
+  const text1Y = useTransform(scrollYProgress, [0.18, 0.24, 0.32, 0.35], [30, 0, 0, -30])
   
-  const text2Opacity = useTransform(scrollYProgress, [0.38, 0.44, 0.54, 0.58], [0, 1, 1, 0])
-  const text2Y = useTransform(scrollYProgress, [0.38, 0.44, 0.54, 0.58], [30, 0, 0, -30])
+  const text2Opacity = useTransform(scrollYProgress, [0.35, 0.40, 0.48, 0.52], [0, 1, 1, 0])
+  const text2Y = useTransform(scrollYProgress, [0.35, 0.40, 0.48, 0.52], [30, 0, 0, -30])
   
-  const text3Opacity = useTransform(scrollYProgress, [0.58, 0.64, 0.74, 0.78], [0, 1, 1, 0])
-  const text3Y = useTransform(scrollYProgress, [0.58, 0.64, 0.74, 0.78], [30, 0, 0, -30])
+  const text3Opacity = useTransform(scrollYProgress, [0.52, 0.57, 0.65, 0.68], [0, 1, 1, 0])
+  const text3Y = useTransform(scrollYProgress, [0.52, 0.57, 0.65, 0.68], [30, 0, 0, -30])
   
-  const text4Opacity = useTransform(scrollYProgress, [0.78, 0.82, 0.88, 0.92], [0, 1, 1, 0])
-  const text4Y = useTransform(scrollYProgress, [0.78, 0.82, 0.88, 0.92], [30, 0, 0, -30])
+  const text4Opacity = useTransform(scrollYProgress, [0.68, 0.73, 0.78, 0.80], [0, 1, 1, 0])
+  const text4Y = useTransform(scrollYProgress, [0.68, 0.73, 0.78, 0.80], [30, 0, 0, -30])
 
-  // 5. 3D Anatomy Layers Z-Explosion Transforms (reverts after last frame)
-  const scleraScale = useTransform(scrollYProgress, [0.1, 0.8, 0.85, 0.95], [1, 1.5, 1.5, 1])
-  const scleraOpacity = useTransform(scrollYProgress, [0.75, 0.8, 0.85, 0.95], [1, 0.2, 0.2, 1])
+  // 5. 3D Anatomy Layers Z-Explosion Transforms (returns to normal at 0.80-0.92)
+  const scleraScale = useTransform(scrollYProgress, [0.1, 0.8, 0.85, 0.92], [1, 1.5, 1.5, 1])
+  const scleraOpacity = useTransform(scrollYProgress, [0.75, 0.8, 0.85, 0.92], [1, 0.2, 0.2, 1])
   
-  const corneaOpacity = useTransform(scrollYProgress, [0, 0.15, 0.25, 0.85, 0.95], [1, 1, 0, 0, 1])
-  const corneaZ = useTransform(scrollYProgress, [0.15, 0.25, 0.85, 0.95], [0, 450, 450, 0])
-  const corneaRotateX = useTransform(scrollYProgress, [0.15, 0.25, 0.85, 0.95], [0, -15, -15, 0])
-  const corneaRotateY = useTransform(scrollYProgress, [0.15, 0.25, 0.85, 0.95], [0, 10, 10, 0])
+  const corneaOpacity = useTransform(scrollYProgress, [0, 0.15, 0.25, 0.80, 0.92], [1, 1, 0, 0, 1])
+  const corneaZ = useTransform(scrollYProgress, [0.15, 0.25, 0.80, 0.92], [0, 450, 450, 0])
+  const corneaRotateX = useTransform(scrollYProgress, [0.15, 0.25, 0.80, 0.92], [0, -15, -15, 0])
+  const corneaRotateY = useTransform(scrollYProgress, [0.15, 0.25, 0.80, 0.92], [0, 10, 10, 0])
   
-  const irisScale = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 0.95], [1, 1.1, 1.1, 1])
-  const irisOpacity = useTransform(scrollYProgress, [0, 0.35, 0.45, 0.85, 0.95], [1, 1, 0, 0, 1])
-  const irisZ = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 0.95], [0, 300, 300, 0])
-  const irisRotateY = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 0.95], [0, -10, -10, 0])
-  const irisRotateX = useTransform(scrollYProgress, [0.25, 0.4, 0.85, 0.95], [0, 5, 5, 0])
+  const irisScale = useTransform(scrollYProgress, [0.25, 0.4, 0.80, 0.92], [1, 1.1, 1.1, 1])
+  const irisOpacity = useTransform(scrollYProgress, [0, 0.35, 0.45, 0.80, 0.92], [1, 1, 0, 0, 1])
+  const irisZ = useTransform(scrollYProgress, [0.25, 0.4, 0.80, 0.92], [0, 300, 300, 0])
+  const irisRotateY = useTransform(scrollYProgress, [0.25, 0.4, 0.80, 0.92], [0, -10, -10, 0])
+  const irisRotateX = useTransform(scrollYProgress, [0.25, 0.4, 0.80, 0.92], [0, 5, 5, 0])
   
-  const lensScale = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 0.95], [1, 1.1, 1.1, 1])
-  const lensOpacity = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.55, 0.65, 0.85, 0.95], [0, 0, 1, 1, 0, 0, 0])
-  const lensZ = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 0.95], [0, 150, 150, 0])
-  const lensRotateX = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 0.95], [0, 20, 20, 0])
-  const lensRotateY = useTransform(scrollYProgress, [0.45, 0.6, 0.85, 0.95], [0, -15, -15, 0])
+  const lensScale = useTransform(scrollYProgress, [0.45, 0.6, 0.80, 0.92], [1, 1.1, 1.1, 1])
+  const lensOpacity = useTransform(scrollYProgress, [0, 0.25, 0.35, 0.55, 0.65, 0.80, 0.92], [0, 0, 1, 1, 0, 0, 0])
+  const lensZ = useTransform(scrollYProgress, [0.45, 0.6, 0.80, 0.92], [0, 150, 150, 0])
+  const lensRotateX = useTransform(scrollYProgress, [0.45, 0.6, 0.80, 0.92], [0, 20, 20, 0])
+  const lensRotateY = useTransform(scrollYProgress, [0.45, 0.6, 0.80, 0.92], [0, -15, -15, 0])
   
-  const retinaScale = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 0.95], [1, 1, 1.2, 1.2, 1])
-  const retinaOpacity = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 0.95], [0, 0, 1, 1, 0])
-  const retinaZ = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 0.95], [0, 0, -150, -150, 0])
-  const retinaRotateX = useTransform(scrollYProgress, [0, 0.65, 0.8, 0.85, 0.95], [0, 0, -10, -10, 0])
+  const retinaScale = useTransform(scrollYProgress, [0, 0.65, 0.78, 0.80, 0.92], [1, 1, 1.2, 1.2, 1])
+  const retinaOpacity = useTransform(scrollYProgress, [0, 0.65, 0.78, 0.80, 0.92], [0, 0, 1, 1, 0])
+  const retinaZ = useTransform(scrollYProgress, [0, 0.65, 0.78, 0.80, 0.92], [0, 0, -150, -150, 0])
+  const retinaRotateX = useTransform(scrollYProgress, [0, 0.65, 0.78, 0.80, 0.92], [0, 0, -10, -10, 0])
 
   // Static particles for GPU performance
   const particles = React.useMemo(() => {
