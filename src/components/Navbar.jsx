@@ -35,16 +35,16 @@ export default function Navbar() {
       {/* Top Bar */}
       <div className="top-bar">
         <div className="container top-bar-inner">
-          <div className="top-bar-item">
-            <Phone size={14} />
-            <a href="tel:+910265-2794454" style={{ color: 'inherit', textDecoration: 'none' }}>+91-0265-2794454</a>
-          </div>
-          <div className="top-bar-item">
-            <Mail size={14} />
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kadameyehospital@yahoo.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>kadameyehospital@yahoo.com</a>
-          </div>
-          <div className="top-bar-item">
-            <Clock size={14} />
+          <a href="tel:+910265-2794454" className="top-bar-item">
+            <Phone size={13} />
+            <span>+91-0265-2794454</span>
+          </a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kadameyehospital@yahoo.com" target="_blank" rel="noopener noreferrer" className="top-bar-item top-bar-email">
+            <Mail size={13} />
+            <span>kadameyehospital@yahoo.com</span>
+          </a>
+          <div className="top-bar-item top-bar-hours">
+            <Clock size={13} />
             <span>Mon-Sat: 9:00 AM - 7:00 PM</span>
           </div>
         </div>

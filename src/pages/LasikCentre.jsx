@@ -36,7 +36,7 @@ export default function LasikCentre() {
   return (
     <PageTransition>
       <div className="page-wrapper lasik-page">
-        <section className="page-hero" style={{ paddingBottom: '3.25rem' }}>
+        <section className="page-hero">
           <div className="container">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}

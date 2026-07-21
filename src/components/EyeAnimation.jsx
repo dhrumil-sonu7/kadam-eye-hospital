@@ -6,10 +6,12 @@ export default function EyeAnimation() {
       <svg viewBox="0 0 200 100" className="eye-svg">
         {/* Outer eye shape */}
         <motion.path
-          d="M10 50 Q100 -10 190 50 Q100 110 10 50Z"
+          d="M10 50 Q100 -10 190 50 Q100 110 10 50 Z"
           fill="none"
           stroke="url(#eyeGradient)"
           strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           initial={{ pathLength: 0, opacity: 0, filter: 'blur(4px)' }}
           animate={{ pathLength: 1, opacity: 1, filter: 'blur(0px)' }}
           transition={{ duration: 2.5, ease: "easeInOut" }}

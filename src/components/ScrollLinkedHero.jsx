@@ -12,30 +12,30 @@ export default function ScrollLinkedHero() {
     offset: ["start start", "end end"]
   })
 
-  // Hero Content Fades Out, then Fades Back In
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.05, 0.85, 1], [1, 0, 0, 1]);
-  const heroY = useTransform(scrollYProgress, [0, 0.05, 0.85, 1], [0, -50, -50, 0]);
+  // Hero Content Fades Out smoothly as user scrolls past intro
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.15, 0.25, 0.85, 1], [1, 1, 0, 0, 1]);
+  const heroY = useTransform(scrollYProgress, [0, 0.15, 0.25, 0.85, 1], [0, 0, -40, -40, 0]);
   
   // 1. Background Blur & Darken (Optimized: animating opacity instead of filter)
-  const bgOpacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
+  const bgOpacity = useTransform(scrollYProgress, [0, 0.2, 0.85, 1], [0, 1, 1, 0]);
 
   // Eye transitions rightward, scales up
-  const eyeScale = useTransform(scrollYProgress, [0, 0.1, 0.85, 1], [1, 1.2, 1.2, 1]);
-  const eyeX = useTransform(scrollYProgress, [0, 0.1, 0.85, 1], [0, 50, 50, 0]);
+  const eyeScale = useTransform(scrollYProgress, [0, 0.2, 0.85, 1], [1, 1.15, 1.15, 1]);
+  const eyeX = useTransform(scrollYProgress, [0, 0.2, 0.85, 1], [0, 40, 40, 0]);
   
   // Anatomy Texts Opacities
   // We offset the start slightly after hero fades out
-  const text1Opacity = useTransform(scrollYProgress, [0.08, 0.15, 0.25, 0.3], [0, 1, 0, 0])
-  const text1Y = useTransform(scrollYProgress, [0.08, 0.15, 0.25, 0.3], [50, 0, -50, -50])
+  const text1Opacity = useTransform(scrollYProgress, [0.2, 0.28, 0.38, 0.42], [0, 1, 0, 0])
+  const text1Y = useTransform(scrollYProgress, [0.2, 0.28, 0.38, 0.42], [40, 0, -40, -40])
   
-  const text2Opacity = useTransform(scrollYProgress, [0.25, 0.35, 0.45, 0.5], [0, 1, 0, 0])
-  const text2Y = useTransform(scrollYProgress, [0.25, 0.35, 0.45, 0.5], [50, 0, -50, -50])
+  const text2Opacity = useTransform(scrollYProgress, [0.38, 0.45, 0.55, 0.6], [0, 1, 0, 0])
+  const text2Y = useTransform(scrollYProgress, [0.38, 0.45, 0.55, 0.6], [40, 0, -40, -40])
   
-  const text3Opacity = useTransform(scrollYProgress, [0.45, 0.55, 0.65, 0.7], [0, 1, 0, 0])
-  const text3Y = useTransform(scrollYProgress, [0.45, 0.55, 0.65, 0.7], [50, 0, -50, -50])
+  const text3Opacity = useTransform(scrollYProgress, [0.55, 0.62, 0.72, 0.76], [0, 1, 0, 0])
+  const text3Y = useTransform(scrollYProgress, [0.55, 0.62, 0.72, 0.76], [40, 0, -40, -40])
   
-  const text4Opacity = useTransform(scrollYProgress, [0.65, 0.75, 0.8, 0.85], [0, 1, 1, 0])
-  const text4Y = useTransform(scrollYProgress, [0.65, 0.75, 0.8, 0.85], [50, 0, 0, -50])
+  const text4Opacity = useTransform(scrollYProgress, [0.72, 0.78, 0.84, 0.88], [0, 1, 1, 0])
+  const text4Y = useTransform(scrollYProgress, [0.72, 0.78, 0.84, 0.88], [40, 0, 0, -40])
 
   // Anatomy Layers Transforms (reverts at the end)
   // Explodes out into Z-space with dynamic individual rotations
@@ -283,10 +283,12 @@ export default function ScrollLinkedHero() {
               <motion.div className="eye-layer" style={{ scale: scleraScale, opacity: scleraOpacity, zIndex: 5 }}>
                 <svg viewBox="0 0 200 100" className="anatomy-svg">
                   <motion.path
-                    d="M10 50 Q100 -10 190 50 Q100 110 10 50Z"
+                    d="M10 50 Q100 -10 190 50 Q100 110 10 50 Z"
                     fill="none"
                     stroke="url(#eyeGradient)"
                     strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     initial={{ pathLength: 0, opacity: 0, filter: 'blur(4px)' }}
                     animate={{ pathLength: 1, opacity: 1, filter: 'blur(0px)' }}
                     transition={{ duration: 2.5, ease: "easeInOut" }}

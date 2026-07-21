@@ -182,10 +182,12 @@ export default function EyeAnatomyScroll() {
           >
             <svg viewBox="0 0 200 100" className="anatomy-svg">
               <path
-                d="M10 50 Q100 -10 190 50 Q100 110 10 50Z"
+                d="M10 50 Q100 -10 190 50 Q100 110 10 50 Z"
                 fill="rgba(15, 23, 42, 0.8)"
                 stroke="url(#eyeGradient)"
                 strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <circle
                 cx="100"

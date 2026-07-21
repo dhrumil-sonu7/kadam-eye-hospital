@@ -1,6 +1,6 @@
-/* ======= SCROLL LINKED HERO ======= */
+/* ======= SCROLL LINKED HERO (3D OPTICAL PERSPECTIVE) ======= */
 .scroll-hero-container {
-  height: 400vh; /* 4 screens worth of scrolling */
+  height: 300vh; /* 3D scroll canvas for desktop */
   position: relative;
   width: 100%;
 }
@@ -14,8 +14,9 @@
   align-items: flex-start;
   justify-content: center;
   overflow: hidden;
-  padding-top: 4.5rem; /* Navbar spacing */
-  will-change: filter; /* For blur performance */
+  padding-top: 5.5rem; /* Aligned right below navbar header */
+  will-change: transform, filter;
+  perspective: 1000px;
 }
 
 /* Base grid layout for layers to share */
@@ -25,15 +26,48 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "left right";
-  gap: 4rem;
+  gap: 3rem;
   align-items: center;
-  padding: 0 20px 4rem; /* match var(--space-3xl) approximately, or 20px side padding */
+  padding: 0 1.5rem 2rem;
 }
 
 /* LEFT SIDE: Hero text and anatomy texts share the same grid area so they overlap perfectly */
 .hero-content-left {
   grid-area: left;
   will-change: opacity, transform;
+}
+
+.hero-text h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 180, 216, 0.1);
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-magenta);
+  margin-bottom: 1.25rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .anatomy-texts-left {
@@ -55,7 +89,22 @@
   will-change: transform, opacity;
 }
 
-/* RIGHT SIDE: The Eye */
+.anatomy-step h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.anatomy-step p {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  line-height: 1.6;
+  color: #94a3b8;
+}
+
+/* RIGHT SIDE: 3D Eye Structure */
 .eye-content-right {
   grid-area: right;
   display: flex;
@@ -66,26 +115,11 @@
   pointer-events: none;
 }
 
-.anatomy-step h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #38bdf8, #818cf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.anatomy-step p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #94a3b8;
-}
-
-/* Anatomy SVG specific styles for the layers */
+/* Anatomy SVG specific styles for 3D Z-Explosion */
 .eye-layers-container {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 360px;
+  height: 360px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,70 +142,155 @@
   width: 100%;
   height: 100%;
   overflow: visible;
-  /* GPU Intensive drop-shadow removed for lag-free rendering */
 }
 
-/* Responsive adjustments */
+/* ======= TABLET & IPAD BREAKPOINT (768px - 992px) ======= */
 @media (max-width: 992px) {
+  .scroll-hero-container {
+    height: 220vh; /* Smooth 3D scroll canvas on iPad/Tablet */
+  }
+
+  .sticky-wrapper {
+    padding-top: 4.75rem;
+  }
+
   .scroll-layers-wrapper {
     grid-template-columns: 1fr;
     grid-template-areas: 
-      "right"
-      "left";
+      "left"
+      "right";
     text-align: center;
-    gap: 0;
-    padding-top: 2rem;
+    gap: 1.5rem;
+    padding: 0 1.25rem 1rem;
+  }
+
+  .hero-text {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
   }
 
   .eye-content-right {
-    height: 350px;
-    margin-bottom: 2rem;
-    transform: scale(0.85); /* Fit tablet */
+    height: 250px;
+    margin: 0 auto;
+  }
+
+  .eye-layers-container {
+    width: 260px;
+    height: 260px;
   }
 
   .anatomy-texts-left {
     position: relative;
-    height: 250px;
+    height: 180px;
   }
 
   .anatomy-step {
     max-width: 100%;
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 0;
     width: 100%;
     text-align: center;
-    margin-bottom: 0;
   }
 }
 
+/* ======= MOBILE BREAKPOINT (<= 768px) ======= */
 @media (max-width: 768px) {
+  .scroll-hero-container {
+    height: 180vh; /* 3D scroll canvas for smartphones */
+    position: relative;
+  }
+
+  .sticky-wrapper {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding-top: 4.5rem;
+    overflow: hidden;
+  }
+
   .scroll-layers-wrapper {
-    margin-top: 0;
-    padding-top: 1rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "left"
+      "right";
+    gap: 1rem;
+    padding: 0 1rem 0;
+    text-align: center;
+  }
+
+  .hero-badge {
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.85rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
   }
 
   .eye-content-right {
-    height: 280px;
-    transform: scale(0.65); /* Fit mobile */
-    margin-bottom: 0;
+    height: 200px;
+    margin: 0 auto;
   }
   
-  .anatomy-texts-left {
+  .eye-layers-container {
+    width: 200px;
     height: 200px;
   }
 
-  .anatomy-step h2 {
-    font-size: 1.8rem;
+  .anatomy-texts-left {
+    height: 140px;
   }
+
+  .anatomy-step h2 {
+    font-size: 1.45rem;
+    margin-bottom: 0.4rem;
+  }
+
   .anatomy-step p {
-    font-size: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
   }
 }
 
 @media (max-width: 480px) {
+  .scroll-layers-wrapper {
+    padding: 0 0.85rem 0;
+  }
+
+  .hero-buttons {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .hero-buttons .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+
   .eye-content-right {
-    transform: scale(0.5); /* Fit small phones */
-    height: 220px;
+    height: 180px;
+  }
+
+  .eye-layers-container {
+    width: 180px;
+    height: 180px;
   }
 }

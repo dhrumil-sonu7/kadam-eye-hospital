@@ -5,6 +5,11 @@ import AnimatedSection from '../components/AnimatedSection'
 import './CorneaCentre.css'
 import useSEO from '../hooks/useSEO'
 
+import imgKerato from '../assets/cornea/Kerato.jpg'
+import imgOrbscanI from '../assets/cornea/OrbscanI.jpg'
+import imgCorntransplant from '../assets/cornea/corntransplant.jpg'
+import imgIntacsplacement from '../assets/cornea/Intacsplacement.jpg'
+
 const conditions = [
   'Corneal ulcers and infections',
   'Keratoconus',
@@ -85,7 +90,7 @@ export default function CorneaCentre() {
               <AnimatedSection variant="fadeUp" delay={0.1}>
                 <div className="gallery-card glass-card">
                   <div className="gallery-img-container">
-                    <img src="/src/assets/cornea/Kerato.jpg" alt="Keratoconus Evaluation" loading="lazy" />
+                    <img src={imgKerato} alt="Keratoconus Evaluation" loading="lazy" />
                   </div>
                   <div className="gallery-info">
                     <h4>Keratoconus Management</h4>
@@ -97,7 +102,7 @@ export default function CorneaCentre() {
               <AnimatedSection variant="fadeUp" delay={0.2}>
                 <div className="gallery-card glass-card">
                   <div className="gallery-img-container">
-                    <img src="/src/assets/cornea/OrbscanI.jpg" alt="Orbscan Topography" loading="lazy" />
+                    <img src={imgOrbscanI} alt="Orbscan Topography" loading="lazy" />
                   </div>
                   <div className="gallery-info">
                     <h4>Corneal Topography</h4>
@@ -109,7 +114,7 @@ export default function CorneaCentre() {
               <AnimatedSection variant="fadeUp" delay={0.3}>
                 <div className="gallery-card glass-card">
                   <div className="gallery-img-container">
-                    <img src="/src/assets/cornea/corntransplant.jpg" alt="Corneal Transplant" loading="lazy" />
+                    <img src={imgCorntransplant} alt="Corneal Transplant" loading="lazy" />
                   </div>
                   <div className="gallery-info">
                     <h4>Corneal Transplants</h4>
@@ -121,7 +126,7 @@ export default function CorneaCentre() {
               <AnimatedSection variant="fadeUp" delay={0.4}>
                 <div className="gallery-card glass-card">
                   <div className="gallery-img-container">
-                    <img src="/src/assets/cornea/Intacsplacement.jpg" alt="Intacs Ring Placement" loading="lazy" />
+                    <img src={imgIntacsplacement} alt="Intacs Ring Placement" loading="lazy" />
                   </div>
                   <div className="gallery-info">
                     <h4>Intacs Ring Segments</h4>
