@@ -209,12 +209,12 @@
   .eye-content-right {
     grid-area: bottom;
     align-self: center;
-    height: 180px;
+    height: 280px;
   }
 
   .eye-layers-container {
-    width: 180px;
-    height: 180px;
+    width: 280px;
+    height: 280px;
   }
 
   /* 3. Anatomy Texts in Top Area (sharing with hero) */
