@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding-top: calc(var(--navbar-height, 84px) + 1.5rem);
+  padding-top: calc(var(--navbar-height, 84px) + 1.25rem);
   will-change: transform, filter;
   perspective: 1000px;
 }
