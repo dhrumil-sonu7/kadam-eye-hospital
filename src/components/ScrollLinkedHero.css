@@ -146,39 +146,33 @@
 
 /* ======= TABLET & MOBILE RESPONSIVE BREAKPOINT (<= 992px) ======= */
 @media (max-width: 992px) {
-  .scroll-hero-container {
-    height: auto;
-    min-height: auto;
-    position: relative;
-  }
-
   .sticky-wrapper {
-    position: relative;
-    top: 0;
-    height: auto;
-    min-height: auto;
     padding-top: calc(var(--navbar-height, 84px) + 0.5rem);
-    padding-bottom: 0.5rem;
-    overflow: visible;
   }
 
   .scroll-layers-wrapper {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+      "top"
+      "bottom";
     align-items: center;
-    justify-content: flex-start;
+    justify-items: center;
     text-align: center;
-    gap: 0.5rem;
+    gap: 1rem;
     padding: 0 1rem;
     width: 100%;
+    height: calc(100vh - var(--navbar-height, 84px));
   }
 
   /* 1. Intro Hero Text on Top */
   .hero-content-left {
-    order: 1;
+    grid-area: top;
     width: 100%;
     max-width: 540px;
     margin: 0 auto;
+    z-index: 10;
   }
 
   .hero-badge {
@@ -203,35 +197,43 @@
     gap: 0.5rem;
   }
 
-  /* 2. Eye Visual directly below buttons */
+  /* 2. Eye Visual in Bottom Area */
   .eye-content-right {
-    order: 2;
-    height: 150px;
-    margin: 0.5rem auto 0;
+    grid-area: bottom;
+    align-self: center;
+    height: 180px;
   }
 
   .eye-layers-container {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
   }
 
-  /* 3. Anatomy Texts */
+  /* 3. Anatomy Texts in Top Area (sharing with hero) */
   .anatomy-texts-left {
-    order: 3;
+    grid-area: top;
     position: relative;
     width: 100%;
     max-width: 540px;
-    height: auto;
-    min-height: 0;
+    height: 100%;
+    min-height: 150px;
     margin: 0 auto;
-    display: none;
+    display: block;
+    z-index: 9;
+  }
+
+  .anatomy-step {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: max-content;
   }
 }
 
 @media (max-width: 480px) {
   .scroll-layers-wrapper {
     padding: 0 0.75rem;
-    gap: 0.35rem;
+    gap: 0.5rem;
   }
 
   .hero-text h1 {
@@ -239,8 +241,7 @@
   }
 
   .eye-content-right {
-    height: 130px;
-    margin: 0.25rem auto 0;
+    height: 140px;
   }
 
   .eye-layers-container {
