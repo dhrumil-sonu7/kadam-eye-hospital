@@ -417,7 +417,7 @@ ul {
 /* --- Page wrapper --- */
 .page-wrapper {
   min-height: 100vh;
-  padding-top: var(--navbar-height);
+  padding-top: calc(var(--navbar-height) - 0.25rem);
   position: relative;
 }
 
@@ -429,6 +429,9 @@ ul {
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
+  .page-wrapper {
+    padding-top: var(--navbar-height);
+  }
   .container { padding: 0 1.5rem; }
   .section { padding: 3.5rem 0; }
   :root { --navbar-height: 86px; }
