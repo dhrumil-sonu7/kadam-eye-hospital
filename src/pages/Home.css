@@ -1,4 +1,8 @@
 /* ======= HERO ======= */
+.page-wrapper.home-page {
+  padding-top: 0;
+}
+
 .hero {
   min-height: 100vh;
   display: flex;
