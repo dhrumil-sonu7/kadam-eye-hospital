@@ -153,14 +153,15 @@
   .scroll-layers-wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto;
     grid-template-areas: 
       "top"
       "bottom";
     align-items: center;
+    align-content: center;
     justify-items: center;
     text-align: center;
-    gap: 1rem;
+    gap: 2.5rem;
     padding: 0 1rem;
     width: 100%;
     height: calc(100vh - var(--navbar-height, 84px));
